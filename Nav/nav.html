@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="navstyle.css">
+</head>
+<body>
+        <!---------------  Navigation Bar  ------------------>
+        <nav>
+            <div class="nav-left">
+                <a href="#"> <img src="images/logo.png" class="logo" alt="Logo"> </a>    <!--replace '#'' with homepage web-->
+                <ul>
+                    <li><a href="#"><img src="images/notification.png" alt=""></a></li>  
+                    <li><a href="#"><img src="images/inbox.png" alt=""></a></li>
+                </ul>
+    
+            </div>
+            <div class="nav-right">
+                <div class="search-box">
+                    <img src="images/search.png" alt="">
+                    <input type="text" placeholder="Search">
+    
+                </div>
+                <div class="nav-user-icon " onclick="settingsMenutoggle()">
+                    <img src="images/profile-pic.jpg" alt="">
+    
+                </div>
+                <!------------------- Sttings-menu----------------------->
+    
+                <div class="settings-menu">
+    
+                    <div id="dark-btn">
+                        <span> </span>
+                    </div>
+    
+    
+    
+                    <div class="settings-menu-inner">
+                        <div class="user-profile">
+                            <img src="images/profile-pic.jpg" alt="">
+                            <div>
+                                <p>Badal Raj</p>
+                                <a href="#">See your profile</a>   <!--here I'll replace # with profile page-->
+                            </div>
+                        </div>
+
+                        <div class="setting-links">
+                            <img src="images/setting.png" class="settings-icon" alt="">
+                            <a href="#">Settings and Privacy <img src="images/arrow.png" width="10px"></a>
+    
+                        </div>
+                        <div class="setting-links">
+                            <img src="images/help.png" class="settings-icon" alt="">
+                            <a href="#">Help and Support <img src="images/arrow.png" width="10px"></a>
+    
+                        </div>
+
+                        <div class="setting-links">
+                            <img src="images/logout.png" class="settings-icon" alt="">
+                            <a href="#">Logout <img src="images/arrow.png" width="10px"></a>
+    
+                        </div>
+    
+                    </div>
+    
+    
+    
+                </div>
+    
+    
+            </div>
+    
+    
+    
+        </nav>
+        <!-- --------------------------Navigation Bar Ends ----------------------------->
+    
+    
+    
+    
+<script src="script.js"></script>    
+</body>
+</html>
