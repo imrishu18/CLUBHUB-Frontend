@@ -86,8 +86,9 @@
 #searchResults {
   text-align: center;
   margin-top: 20px;
-  font-size: 18px;
+  font-size: 20px;
   color: #333;
+  margin-right: 245px;
 }
 
 .search-icon {
