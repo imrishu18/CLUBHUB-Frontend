@@ -8,13 +8,7 @@
   box-sizing: border-box;
   font-size: var(--font-size-31xl);
   font-family: var(--font-luckiest-guy);
-}
-.top-bar2 {
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  background-color: var(--color-whitesmoke-200);
-  border: 1px solid var(--color-whitesmoke-100);
-  box-sizing: border-box;
-  max-width: 100%;
+  margin-left: 28px;
 }
 .top-bar2 {
   align-self: stretch;
@@ -23,12 +17,14 @@
   align-items: flex-start;
   justify-content: flex-start;
   padding: var(--padding-5xs) var(--padding-4xs) 0 var(--padding-mini);
+  border: 2px solid black;
   gap: var(--gap-xl);
   z-index: 3;
   font-size: var(--font-size-16xl);
   color: var(--color-gray-100);
-  margin-left: 297px;
-  margin-right: 495px;
+  margin-left: 343px;
+  margin-right: 427px;
+  box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.5);
 }
 .search-club {
   align-self: stretch;
@@ -53,21 +49,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60%;
-  padding: 10px;   
-  margin-top: 46px;
-  
-  margin-left: 210px;
+  width: 62%;
+  padding: 16px;
+  margin-top: 53px;
+  margin-left: 240px;
 }
-
 .search-container input[type="text"] {
   width: 50%;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 3px solid black;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 20px;
 }
-
 .search-container button {
   padding: 10px 20px;
   margin-left: 20px;
@@ -77,20 +70,21 @@
   border-radius: 8px;
   cursor: pointer;
   font-size: 16px;
+  box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.5);
 }
-
 .search-container button:hover {
-  background-color: #5b7083;
+  background-color: #FF8C00;
 }
-
+.search-container button:focus{
+  background-color: #f37036;
+}
 #searchResults {
   text-align: center;
   margin-top: 20px;
-  font-size: 20px;
+  font-size: 25px;
   color: #333;
-  margin-right: 245px;
+  margin-right: 240px;
 }
-
 .search-icon {
   display: flex;
   flex-direction: row;
@@ -135,7 +129,16 @@
   font-weight: 400;
   font-family: inherit;
   z-index: 7;
+  box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.5);
+  border: 2px solid black;
   cursor: pointer;
+}
+.button3:hover{
+  background-color: #FF8C00;
+}
+
+.button3:focus{
+    background-color: #f37036;
 }
 .your-club-header,
 .your-club-header-wrapper {
@@ -251,12 +254,14 @@
   background-color: var(--color-whitesmoke-200);
   border: 1px solid var(--color-whitesmoke-100);
   box-sizing: border-box;
-  width: 18.5rem;
+  width: 21.1rem;
   flex-direction: column;
   padding: var(--padding-sm) var(--padding-4xl) 27.25rem var(--padding-7xl);
+  border: 2px solid black;
   gap: var(--gap-lgi);
   z-index: 6;
   font-size: var(--font-size-11xl);
   font-family: var(--font-poly);
+  height: 400%;
+  box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.5);
 }
-
