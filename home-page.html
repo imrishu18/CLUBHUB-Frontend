@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./home-page.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Luckiest Guy:wght@400&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Karla:wght@300;700;800&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Segoe UI:wght@700;900&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Archivo Narrow:wght@400&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poly:wght@400&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Open Sans:wght@300&display=swap"
+    />
+  </head>
+  <body>
+    <div class="top-bar2">
+      <div class="home-club-frame">
+        <div class="home-club">Home</div>
+      </div>
+      </div>
+    <div class="post-section">
+      <div class="post-form">
+          <img src="https://via.placeholder.com/50" alt="User Avatar" class="form-avatar">
+          <textarea id="post-text" rows="3" placeholder="What's happening?"></textarea>
+          <div class="post-options">
+              <input type="file" id="post-media" accept="image/*,video/*">
+              <button class="post-button" onclick="createPost()">Post</button>
+          </div>
+      </div>
+      <div id="posts-container"></div>
+  </div>
+  
+  <script>
+      function createPost() {
+          const text = document.getElementById('post-text').value;
+          const media = document.getElementById('post-media').files[0];
+  
+          if (!text && !media) {
+              alert('Please enter some text or select a media file.');
+              return;
+          }
+  
+          const postsContainer = document.getElementById('posts-container');
+  
+          const postDiv = document.createElement('div');
+          postDiv.className = 'post';
+  
+          const userInfoDiv = document.createElement('div');
+          userInfoDiv.className = 'user-info';
+  
+          const avatarImg = document.createElement('img');
+          avatarImg.src = 'https://via.placeholder.com/50';
+          avatarImg.alt = 'User Avatar';
+          avatarImg.className = 'avatar';
+  
+          const userInfoTextDiv = document.createElement('div');
+          const usernameSpan = document.createElement('span');
+          usernameSpan.className = 'username';
+          usernameSpan.innerText = 'User';
+  
+          const userHandleSpan = document.createElement('span');
+          userHandleSpan.className = 'user-handle';
+          userHandleSpan.innerText = '@userhandle';
+  
+          const postTimeSpan = document.createElement('span');
+          postTimeSpan.className = 'post-time';
+          postTimeSpan.innerText = 'Just now';
+  
+          userInfoTextDiv.appendChild(usernameSpan);
+          userInfoTextDiv.appendChild(userHandleSpan);
+          userInfoTextDiv.appendChild(postTimeSpan);
+  
+          userInfoDiv.appendChild(avatarImg);
+          userInfoDiv.appendChild(userInfoTextDiv);
+  
+          const postContentDiv = document.createElement('div');
+          postContentDiv.className = 'post-content';
+  
+          const postTextP = document.createElement('p');
+          postTextP.innerText = text;
+  
+          postContentDiv.appendChild(postTextP);
+  
+          if (media) {
+              const mediaElement = document.createElement(media.type.startsWith('video') ? 'video' : 'img');
+              mediaElement.src = URL.createObjectURL(media);
+              if (media.type.startsWith('video')) {
+                  mediaElement.controls = true;
+              }
+              mediaElement.className = 'post-media';
+              postContentDiv.appendChild(mediaElement);
+          }
+  
+          const postActionsDiv = document.createElement('div');
+          postActionsDiv.className = 'post-actions';
+  
+          const likeButton = document.createElement('button');
+          likeButton.innerHTML = 'Like';
+          likeButton.onclick = () => alert('Liked');
+  
+          const dislikeButton = document.createElement('button');
+          dislikeButton.innerHTML = 'Dislike';
+          dislikeButton.onclick = () => alert('Disliked');
+  
+          const commentButton = document.createElement('button');
+          commentButton.innerHTML = 'Comment';
+          commentButton.onclick = () => toggleCommentSection(postDiv);
+  
+          postActionsDiv.appendChild(likeButton);
+          postActionsDiv.appendChild(dislikeButton);
+          postActionsDiv.appendChild(commentButton);
+  
+          postDiv.appendChild(userInfoDiv);
+          postDiv.appendChild(postContentDiv);
+          postDiv.appendChild(postActionsDiv);
+  
+          postsContainer.prepend(postDiv);
+  
+          document.getElementById('post-text').value = '';
+          document.getElementById('post-media').value = '';
+      }
+  
+      function toggleCommentSection(postDiv) {
+          let commentSection = postDiv.querySelector('.comment-section');
+          if (commentSection) {
+              commentSection.remove();
+          } else {
+              commentSection = document.createElement('div');
+              commentSection.className = 'comment-section';
+  
+              const commentTextArea = document.createElement('textarea');
+              commentTextArea.rows = 2;
+              commentTextArea.placeholder = 'Write a comment...';
+              commentSection.appendChild(commentTextArea);
+  
+              const commentButton = document.createElement('button');
+              commentButton.innerHTML = 'Post Comment';
+              commentButton.onclick = () => postComment(commentTextArea, commentSection);
+              commentSection.appendChild(commentButton);
+  
+              postDiv.appendChild(commentSection);
+          }
+      }
+  
+      function postComment(commentTextArea, commentSection) {
+          const commentText = commentTextArea.value.trim();
+          if (commentText === '') {
+              alert('Please write a comment.');
+              return;
+          }
+  
+          const commentDiv = document.createElement('div');
+          commentDiv.className = 'comment';
+  
+          const commentUserInfoDiv = document.createElement('div');
+          commentUserInfoDiv.className = 'user-info';
+  
+          const commentAvatarImg = document.createElement('img');
+          commentAvatarImg.src = 'https://via.placeholder.com/50';
+          commentAvatarImg.alt = 'User Avatar';
+          commentAvatarImg.className = 'avatar';
+  
+          const commentUserInfoTextDiv = document.createElement('div');
+          const commentUsernameSpan = document.createElement('span');
+          commentUsernameSpan.className = 'username';
+          commentUsernameSpan.innerText = 'User';
+  
+          const commentUserHandleSpan = document.createElement('span');
+          commentUserHandleSpan.className = 'user-handle';
+          commentUserHandleSpan.innerText = '@userhandle';
+  
+          commentUserInfoTextDiv.appendChild(commentUsernameSpan);
+          commentUserInfoTextDiv.appendChild(commentUserHandleSpan);
+  
+          commentUserInfoDiv.appendChild(commentAvatarImg);
+          commentUserInfoDiv.appendChild(commentUserInfoTextDiv);
+  
+          const commentTextP = document.createElement('p');
+          commentTextP.innerText = commentText;
+  
+          commentDiv.appendChild(commentUserInfoDiv);
+          commentDiv.appendChild(commentTextP);
+  
+          commentSection.appendChild(commentDiv);
+          commentTextArea.value = '';
+      }
+  </script>
+  
+      <div class="rectangle-parent1">
+        <div class="frame-child6"></div>
+        <nav class="feed-header">
+          <div class="clubhub-frame">
+            <a class="clubhub2">ClubHub</a>
+          </div>
+          <div class="feed-search">
+            <div class="search-bar">
+              <div class="search-input">
+                <div class="search-icon">
+                  <img
+                    class="search-icon-child"
+                    loading="lazy"
+                    alt=""
+                    src="./public/group-31.svg"
+                  />
+
+                  <button class="button3">Your feed</button>
+                </div>
+                <div class="search-separator">
+                  <div class="search-separator-child"></div>
+                </div>
+              </div>
+            </div>
+            <div class="club-header-parent">
+              <div class="club-header">
+                <img class="group-icon1" alt="" src="./public/group.svg" />
+              </div>
+              <button class="button3">Search clubs</button>
+            </div>
+          </div>
+          <div class="your-club-header-wrapper">
+            <div class="your-club-header">
+              <div class="your-club-content">
+                <img
+                  class="image-6-icon"
+                  loading="lazy"
+                  alt=""
+                  src="./public/image-6@2x.png"
+                />
+              </div>
+              <button class="button3">Your clubs</button>
+            </div>
+          </div>
+          <div class="calendar-day-parent">
+            <img
+              class="calendar-day-icon"
+              loading="lazy"
+              alt=""
+              src="./public/calendarday.svg"
+            />
+
+            <button class="button3">Calendar</button>
+          </div>
+          <div class="announcement-header-wrapper">
+            <div class="announcement-header">
+              <div class="announcement-content">
+                <img
+                  class="image-1-icon"
+                  loading="lazy"
+                  alt=""
+                  src="./public/image-1@2x.png"
+                />
+              </div>
+              <button class="button3">Announcement</button>
+            </div>
+          </div>
+        </nav>
+        <div class="live-event-header-wrapper">
+          <div class="live-event-header">
+            <img
+              class="image-5-icon"
+              loading="lazy"
+              alt=""
+              src="./public/image-5@2x.png"
+            />
+
+            <div class="live-event-wrapper">
+              <button class="button3">Live event</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
