@@ -63,6 +63,7 @@
     display: flex;
     gap: 20px;
     color: black;
+    margin-left: 550px;
   }
   
   .icon-button {
@@ -77,8 +78,6 @@
   .icon {
     width: 40px;
     height: 40px;
-    margin-left: 563px;
-    margin-right: -556px;
     margin-top: 10px;
   }
   
