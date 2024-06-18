@@ -30,6 +30,7 @@
   display: flex;
   gap: 20px;
   color: black;
+  margin-left: 510px;
 }
 
 .icon-button {
@@ -44,8 +45,6 @@
 .icon {
   width: 40px;
   height: 40px;
-  margin-left: 505px;
-  margin-right: -490px;
   margin-top: 10px;
 
 }    
