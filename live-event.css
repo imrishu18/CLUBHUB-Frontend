@@ -263,6 +263,12 @@
     margin-left: -9px;
     margin-top: 10px;
 }
+.post img {
+    height: 220px;
+    width: 100%;
+    border-radius: 5px;
+    display: flex;
+}
 
 .post h3 {
     margin: 0 0 10px;
@@ -275,7 +281,6 @@
     margin: 15px 25px;
     color: black;
     font-size: 20px;
-    font-weight: bold;
     padding: 20px;
     border: 2px solid black;
     box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.5);
