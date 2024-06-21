@@ -63,13 +63,6 @@
   
   <script>
 
-        document.getElementById('profileButton').addEventListener('click', function() {
-            alert('Profile button clicked!');
-        });
-        
-        document.getElementById('notificationButton').addEventListener('click', function() {
-            alert('Notification button clicked!');
-        });
       function createPost() {
           const text = document.getElementById('post-text').value;
           const media = document.getElementById('post-media').files[0];
@@ -241,7 +234,7 @@
                     src="./public/group-31.svg"
                   />
 
-                  <button class="button3">Your feed</button>
+                  <button class="button3" id="yourFeedButton">Your feed</button>
                 </div>
                 <div class="search-separator">
                   <div class="search-separator-child"></div>
@@ -252,7 +245,7 @@
               <div class="club-header">
                 <img class="group-icon1" alt="" src="./public/group.svg" />
               </div>
-              <button class="button3">Search clubs</button>
+              <button class="button3" id="searchClubButton">Search clubs</button>
             </div>
           </div>
           <div class="your-club-header-wrapper">
@@ -265,7 +258,7 @@
                   src="./public/image-6@2x.jpg"
                 />
               </div>
-              <button class="button3">Your clubs</button>
+              <button class="button3" id="yourClubButton">Your clubs</button>
             </div>
           </div>
           <div class="calendar-day-parent">
@@ -276,7 +269,7 @@
               src="./public/calendarday.svg"
             />
 
-            <button class="button3">Calendar</button>
+            <button class="button3" id="calendarButton">Calendar</button>
           </div>
           <div class="announcement-header-wrapper">
             <div class="announcement-header">
@@ -288,7 +281,7 @@
                   src="./public/image-1@2x.jpg"
                 />
               </div>
-              <button class="button3">Announcement</button>
+              <button class="button3" id="announcementButton">Announcement</button>
             </div>
           </div>
         </nav>
@@ -302,11 +295,38 @@
             />
 
             <div class="live-event-wrapper">
-              <button class="button3">Live event</button>
+              <button class="button3" id="liveEventButton">Live event</button>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <script>  
+       document.getElementById('profileButton').addEventListener('click', function() {
+              window.location.href = 'profile.html';
+          });
+          document.getElementById('notificationButton').addEventListener('click', function() {
+            alert('Notification button clicked!');
+        });
+      document.getElementById('yourFeedButton').addEventListener('click', function() {
+                window.location.href = 'home-page.html';
+            });
+            document.getElementById('searchClubButton').addEventListener('click', function() {
+                window.location.href = 'search-clubs.html';
+            });
+            document.getElementById('yourClubButton').addEventListener('click', function() {
+                window.location.href = 'your-clubs.html';
+            });
+            document.getElementById('calendarButton').addEventListener('click', function() {
+                window.location.href = 'calendar.html';
+            });
+            document.getElementById('announcementButton').addEventListener('click', function() {
+                window.location.href = 'announcement.html';
+            });
+            document.getElementById('liveEventButton').addEventListener('click', function() {
+                window.location.href = 'live-event.html';
+            });
+      </script>
   </body>
 </html>
