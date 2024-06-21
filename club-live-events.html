@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <title>VIRTUAL COLLEGE COMMUNITY</title>
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Luckiest Guy:wght@400&display=swap"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />"
+    <link rel="stylesheet" href="./modal-specific.css">
+  </head>
+  <body>
+      <div class="rectangle-parent1">
+        <div class="frame-child6"></div>
+        <nav class="feed-header">
+          <div class="clubhub-frame">
+            <a class="clubhub2">ClubHub</a>
+          </div>
+          <div class="feed-search"></div>
+          <div class="tech-club border">
+            <div class="box1 box">
+                <div class="box-content">
+                    <div class="nav-bar border">
+                        <span>Club</span>
+                        <div class="icon-container">
+                            <button id="profileButton" class="icon-button">
+                                <img src="public/profile.svg" alt="Profile Icon" class="icon">
+                            </button>
+                            <button id="notificationButton" class="icon-button">
+                                <img src="public/notification.svg" alt="Notification Icon" class="icon">
+                            </button>
+                        </div>
+</div>
+<div class="box-img" style="background-image: url('public/img2.jpg')" id="boxImg">      
+    </div>    
+    <input type="file" id="fileInput" accept="image/*">
+
+                    <div class="panel1 border">
+                        <div class="tech-page">
+                            <i class="fa-solid fa-circle-notch"></i>
+                             Tech Club
+                        </div>
+                         
+                        <div class="invite border">
+                            <a href="#invite">Invite</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="panel2">
+        <div class="panel-ops">
+                <a href="club-discussion.html">Discussion</a>
+                <a href="club-calender.html">Calendar</a>
+                <a href="club-announcement.html">Announcement</a>
+                <a href="club-live-events.html">Live Events</a>
+        </div>
+    </div>
+    <button class="create-event-button" onclick="openModal()">Create Live Event</button>
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Create Live Event</h2>
+            <form id="eventForm">
+                <label for="poster">Poster:</label>
+                <input type="file" id="poster" name="poster" accept="image/*" required/>
+
+                <label for="organizerName">Organizer Name:</label>
+                <input type="text" id="organizerName" name="organizerName" required />
+
+                <label for="eventName">Event Name:</label>
+                <input type="text" id="eventName" name="eventName" required />
+
+                <label for="eventDateTime">Event Date and Time:</label>
+                <input type="datetime-local" id="eventDateTime" name="eventDateTime" required />
+
+                <label for="eventDescription">Event Description:</label>
+                <textarea id="eventDescription" name="eventDescription" required></textarea>
+
+                <label for="eventLink">Event Link:</label>
+                <input type="url" id="eventLink" name="eventLink" required />
+
+                <button type="submit" class="post-button">Post</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="postsContainer" class="posts-container"></div>
+
+    <script>
+       document.getElementById('profileButton').addEventListener('click', function() {
+              window.location.href = 'profile.html';
+          });
+          document.getElementById('notificationButton').addEventListener('click', function() {
+            alert('Notification button clicked!');
+        });
+
+        function openModal() {
+            document.getElementById("eventModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("eventModal").style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById("eventModal")) {
+                closeModal();
+            }
+        }
+
+        document.getElementById('eventForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const posterFile = document.getElementById('poster').files[0];
+            const organizerName = document.getElementById('organizerName').value;
+            const eventName = document.getElementById('eventName').value;
+            const eventDateTime = document.getElementById('eventDateTime').value;
+            const eventDescription = document.getElementById('eventDescription').value;
+            const eventLink = document.getElementById('eventLink').value;
+
+            if (posterFile) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const postContainer = document.createElement('div');
+                    postContainer.className = 'post';
+
+                    postContainer.innerHTML = `
+                        <h3>${eventName}</h3>
+                        <img src="${e.target.result}" alt="Event Poster"/>
+                        <p><strong>Organizer:</strong> ${organizerName}</p>
+                        <p><strong>Date and Time:</strong> ${eventDateTime}</p>
+                        <p><strong>Description:</strong> ${eventDescription}</p>
+                        <p><strong>Link:</strong> <a href="${eventLink}" target="_blank">${eventLink}</a></p>
+                    `;
+
+                    document.getElementById('postsContainer').appendChild(postContainer);
+                    closeModal();
+                };
+                reader.readAsDataURL(posterFile);
+            }
+        });
+    </script>
+    <script>
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('boxImg').style.backgroundImage = `url(${e.target.result})`;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+
+  </body>
+</html>
