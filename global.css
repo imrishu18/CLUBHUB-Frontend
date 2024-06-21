@@ -111,7 +111,3 @@ body {
   --br-21xl: 40px;
   --br-6xl: 25px;
 }
-/* Add this to your CSS file */
-nav {
-  display: none;
-}
