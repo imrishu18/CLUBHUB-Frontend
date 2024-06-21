@@ -41,7 +41,7 @@
                     <div class="search-input">
                         <div class="search-icon">
                             <img class="search-icon-child" loading="lazy" alt="" src="./public/group-31.svg" />
-                            <button class="button3">Your feed</button>
+                            <button class="button3" id="yourFeedButton">Your feed</button>
                         </div>
                         <div class="search-separator">
                             <div class="search-separator-child"></div>
@@ -52,7 +52,7 @@
                     <div class="club-header">
                         <img class="group-icon1" alt="" src="./public/group.svg" />
                     </div>
-                    <button class="button3">Search clubs</button>
+                    <button class="button3" id="searchClubButton">Search clubs</button>
                 </div>
             </div>
             <div class="your-club-header-wrapper">
@@ -60,19 +60,19 @@
                     <div class="your-club-content">
                         <img class="image-6-icon" loading="lazy" alt="" src="./public/image-6@2x.jpg" />
                     </div>
-                    <button class="button3">Your clubs</button>
+                    <button class="button3" id="yourClubButton">Your clubs</button>
                 </div>
             </div>
             <div class="calendar-day-parent">
                 <img class="calendar-day-icon" loading="lazy" alt="" src="./public/calendarday.svg" />
-                <button class="button3">Calendar</button>
+                <button class="button3" id="calendarButton">Calendar</button>
             </div>
             <div class="announcement-header-wrapper">
                 <div class="announcement-header">
                     <div class="announcement-content">
                         <img class="image-1-icon" loading="lazy" alt="" src="./public/image-1@2x.jpg" />
                     </div>
-                    <button class="button3">Announcement</button>
+                    <button class="button3" id="announcementButton">Announcement</button>
                 </div>
             </div>
         </nav>
@@ -80,7 +80,7 @@
             <div class="live-event-header">
                 <img class="image-5-icon" loading="lazy" alt="" src="./public/image-5@2x.jpg" />
                 <div class="live-event-wrapper">
-                    <button class="button3">Live event</button>
+                    <button class="button3" id="liveEventButton">Live event</button>
                 </div>
             </div>
         </div>
@@ -93,11 +93,13 @@
                 <label for="organizerName">Club Name:</label>
                 <input type="text" id="organizerName" name="organizerName" required />
 
+                <label for="poster">Poster:</label>
+                <input type="file" id="poster" name="poster" accept="image/*" required/>
 
                 <label for="eventDateTime">Date and Time:</label>
                 <input type="datetime-local" id="eventDateTime" name="eventDateTime" required />
 
-                <label for="eventDescription">Notice:</label>
+                <label for="eventDescription">Important Announcement:</label>
                 <textarea id="eventDescription" name="eventDescription" required></textarea>
 
 
@@ -108,49 +110,74 @@
     <div id="postsContainer" class="posts-container"></div>
 
     <script>
-        document.getElementById('profileButton').addEventListener('click', function() {
-            alert('Profile button clicked!');
-        });
-        
-        document.getElementById('notificationButton').addEventListener('click', function() {
-            alert('Notification button clicked!');
-        });
-
         function openModal() {
-            document.getElementById("eventModal").style.display = "block";
+        document.getElementById("eventModal").style.display = "block";
+    }
+
+    function closeModal() {
+        document.getElementById("eventModal").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == document.getElementById("eventModal")) {
+            closeModal();
         }
+    }
 
-        function closeModal() {
-            document.getElementById("eventModal").style.display = "none";
-        }
+    document.getElementById('eventForm').addEventListener('submit', function(e) {
+        e.preventDefault();
 
-        window.onclick = function(event) {
-            if (event.target == document.getElementById("eventModal")) {
-                closeModal();
-            }
-        }
+        const organizerName = document.getElementById('organizerName').value;
+        const eventDateTime = document.getElementById('eventDateTime').value;
+        const eventDescription = document.getElementById('eventDescription').value;
+        const posterInput = document.getElementById('poster');
+        const posterFile = posterInput.files[0];
 
-        document.getElementById('eventForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        const postContainer = document.createElement('div');
+        postContainer.className = 'post';
 
-            const organizerName = document.getElementById('organizerName').value;
-            const eventDateTime = document.getElementById('eventDateTime').value;
-            const eventDescription = document.getElementById('eventDescription').value;
-
-
-            const postContainer = document.createElement('div');
-            postContainer.className = 'post';
-
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            const posterURL = event.target.result;
             postContainer.innerHTML = `
                 <h3>${organizerName}</h3>
+                <img src="${posterURL}" alt="Event Poster">
                 <p><strong>Date and Time:</strong> ${eventDateTime}</p>
-                <p><strong>Description:</strong> ${eventDescription}</p>
-
+                <p><strong>Important Announcement:</strong> ${eventDescription}</p>
             `;
-
             document.getElementById('postsContainer').appendChild(postContainer);
-            closeModal();
+        };
+        reader.readAsDataURL(posterFile);
+
+        closeModal();
+    });
+</script>
+
+<script>  
+   document.getElementById('profileButton').addEventListener('click', function() {
+              window.location.href = 'profile.html';
+          });
+          document.getElementById('notificationButton').addEventListener('click', function() {
+            alert('Notification button clicked!');
         });
+          document.getElementById('yourFeedButton').addEventListener('click', function() {
+              window.location.href = 'home-page.html';
+          });
+          document.getElementById('searchClubButton').addEventListener('click', function() {
+              window.location.href = 'search-clubs.html';
+          });
+          document.getElementById('yourClubButton').addEventListener('click', function() {
+              window.location.href = 'your-clubs.html';
+          });
+          document.getElementById('calendarButton').addEventListener('click', function() {
+              window.location.href = 'calendar.html';
+          });
+          document.getElementById('announcementButton').addEventListener('click', function() {
+              window.location.href = 'announcement.html';
+          });
+          document.getElementById('liveEventButton').addEventListener('click', function() {
+              window.location.href = 'live-event.html';
+          });
     </script>
 </body>
 </html>
