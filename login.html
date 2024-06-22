@@ -73,11 +73,11 @@
           <form class="frame-container">
             <div class="frame-div">
               <div class="frame-parent1">
-                <button class="rectangle-parent">
+                <button class="rectangle-parent" id="signButton">
                   <div class="frame-child"></div>
                   <b class="register">Sign-In</b>
                 </button>
-                <button class="rectangle-parent">
+                <button class="rectangle-parent" id="regisButton">
                   <div class="frame-child"></div>
                   <b class="register">Register</b>
                 </button>
@@ -87,7 +87,7 @@
               <input class="frame-item" placeholder="College id" type="text" />
 
               <div class="frame-parent3">
-                <input class="frame-inner" placeholder="Password" type="text" />
+                <input class="frame-inner" placeholder="Password" type="password" />
 
                 <div class="frame-parent4">
                   <div class="image-parent">
@@ -103,7 +103,7 @@
                 </div>
               </div>
             </div>
-            <button class="rectangle-group">
+            <button class="rectangle-group" id="signInButton">
               <div class="rectangle-div"></div>
               <div class="sign-in1">SIGN IN</div>
             </button>
@@ -111,6 +111,19 @@
         </div>
       </section>
     </div>
+    <script>
+      document.getElementById('signButton').addEventListener('click', function(event) {
+        event.preventDefault();
+        window.location.href = 'login.html';
+      });
+      document.getElementById('regisButton').addEventListener('click', function(event) {
+        event.preventDefault();
+        window.location.href = 'register.html';
+      });
+      document.getElementById('signInButton').addEventListener('click', function(event) {
+        event.preventDefault();
+        window.location.href = 'home-page.html';
+      });
+    </script>
   </body>
 </html>
-
