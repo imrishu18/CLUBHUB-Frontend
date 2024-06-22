@@ -73,12 +73,12 @@
               <div class="frame-parent7">
                 <div class="sign-in-button-container-wrapper">
                   <div class="sign-in-button-container">
-                    <button class="rectangle-container">
+                    <button class="rectangle-container"  id="signIn">
                       <div class="frame-child1"></div>
                       <b class="sign-in2">Sign in</b>
                     </button>
                        
-                        <button class="rectangle-container">
+                        <button class="rectangle-container"  id="registerPage">
                           <div class="frame-child1"></div>
                           <b class="sign-in2">Register</b>
                         </button>
@@ -98,14 +98,28 @@
                 type="text"
               />
 
-              <button class="sign-in3">
+              <button class="sign-in3" id="regispage">
                 <div class="sign-in-child"></div>
-                <div class="resigter">Register</div>
+                <div class="resigter" >Register</div>
               </button>
             </form>
           </div>
         </div>
       </section>
     </div>
+    <script>
+      document.getElementById('signIn').addEventListener('click', function(event) {
+        event.preventDefault();
+        window.location.href = 'login.html';
+      });
+      document.getElementById('registerPage').addEventListener('click', function(event) {
+        event.preventDefault();
+        window.location.href = 'register.html';
+      });
+      document.getElementById('regispage').addEventListener('click', function(event) {
+        event.preventDefault();
+        window.location.href = 'login.html';
+      });
+    </script>
   </body>
 </html>
