@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile</title>
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./profile.css" />
+</head>
+<body>
+    <div class="main">
+        <div class="cover">
+            <img src="./public/cover.jpg" class="cover-img" id="cover-img">
+            <input type="file" id="cover-photo-input" style="display: none;">
+            <button class="edit-cover-btn" onclick="document.getElementById('cover-photo-input').click()"> + </button>
+        </div>
+        <div class="profile-info">
+            <div class="profile-img">
+                <img src="./public/profile-pic.jpg" id="profile-img">
+                <input type="file" id="profile-photo-input" style="display: none;">
+                <button class="edit-profile-btn" onclick="document.getElementById('profile-photo-input').click()"> + </button>
+            </div>
+            <div><button onclick="editUsername()">Edit @user</button></div>
+        </div>
+        <div class="profile-section">
+            <div class="profile-details">
+                <h3>Profile Name</h3>
+                <p id="username">@username</p>
+                <input type="text" id="username-input" style="display: none;" placeholder="Enter new username">
+            </div>
+            <div class="profile-desc">
+                <p>other details</p>
+                <p>------------</p>
+                <p>------------</p>
+            </div>   
+        </div>
+        <div class="club-details">
+            <div class="club-section">Clubs</div>
+            <div class="club">
+                <div class="club-profile"><img src="./public/tech.jpg" alt=""></div>
+                <div class="club-text">
+                    <div class="club-heading">Tech Club</div>
+                    <div class="club-desc">Club description</div>
+                </div>
+            </div>
+            <div class="club">
+                <div class="club-profile"><img src="./public/blank.jpg" alt=""></div>
+                <div class="club-text">
+                    <div class="club-heading">-------</div>
+                    <div class="club-desc">-------</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('profile-photo-input').addEventListener('change', function(e) {
+    const reader = new FileReader();
+    reader.onload = function() {
+        const img = document.getElementById('profile-img');
+        img.src = reader.result;
+    };
+    reader.readAsDataURL(e.target.files[0]);
+});
+
+document.getElementById('cover-photo-input').addEventListener('change', function(e) {
+    const reader = new FileReader();
+    reader.onload = function() {
+        const img = document.getElementById('cover-img');
+        img.src = reader.result;
+    };
+    reader.readAsDataURL(e.target.files[0]);
+});
+
+function editUsername() {
+    const usernameElement = document.getElementById('username');
+    const usernameInput = document.getElementById('username-input');
+    const isEditing = usernameInput.style.display === 'block';
+
+    if (isEditing) {
+        usernameElement.textContent = '@' + usernameInput.value;
+        usernameElement.style.display = 'block';
+        usernameInput.style.display = 'none';
+    } else {
+        usernameInput.value = usernameElement.textContent.substring(1); // Remove '@'
+        usernameElement.style.display = 'none';
+        usernameInput.style.display = 'block';
+    }
+}
+
+    </script>
+</body>
+</html>
