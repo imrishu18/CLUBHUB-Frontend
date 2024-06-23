@@ -20,7 +20,7 @@
     bottom: 1rem;
     right: 1rem;
     color: white;
-    background-color: #F37036;
+    background-color: #FF7518;
     border: 1px solid white;
     
     
@@ -62,7 +62,7 @@
     right: 0;
     transform: translate(50%, 50%);
     color: white;
-    background-color: #F37036;
+    background-color: #FF7518;
     border: none;
     border-radius: 0.5rem;
     
@@ -76,7 +76,7 @@
 
 div button {
     color: white;
-    background-color: #F37036;
+    background-color: #FF7518;
     border: none;
     border-radius: 0.5rem;
     width: 5rem;
